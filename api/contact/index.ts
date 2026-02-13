@@ -22,12 +22,15 @@ export default async function handler(req: Request, res: Response) {
     resend = new Resend(process.env.RESEND_API_KEY);
   }
   if (req.method === 'GET') {
+    const safeKeys = Object.keys(process.env).filter(key =>
+      !key.includes('KEY') && !key.includes('SECRET') && !key.includes('PASSWORD') && !key.includes('TOKEN')
+    );
     return res.status(200).json({
       status: 'API Online',
-      env_check: {
-        hasKey: !!process.env.RESEND_API_KEY,
-        hasFrom: !!process.env.FROM_EMAIL
-      }
+      isVercel: !!process.env.VERCEL,
+      env_count: Object.keys(process.env).length,
+      resend_key_length: process.env.RESEND_API_KEY ? process.env.RESEND_API_KEY.length : 0,
+      visible_env_keys: safeKeys
     });
   }
 
