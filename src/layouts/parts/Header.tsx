@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
-import { TypingEffect } from '@/components/TypingEffect';
 
 export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -18,7 +17,7 @@ export default function Header() {
             <nav className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8">
                 {/* Logo */}
                 <div className="flex lg:flex-1">
-                    <a href="https://Boblucidoteam.com" className="-m-1.5 p-1.5 flex items-center gap-3">
+                    <a href="https://lucidoglobal.com" className="-m-1.5 p-1.5 flex items-center gap-3" target="_blank" rel="noopener noreferrer">
                         <img
                             src="https://img1.wsimg.com/isteam/ip/daf89318-8ad7-4a11-8f4a-b5842fa45c45/images%20(2).png"
                             alt="Selling with Sean Logo"
@@ -41,15 +40,6 @@ export default function Header() {
                             <Menu className="h-6 w-6" aria-hidden="true" />
                         )}
                     </button>
-                </div>
-
-                {/* Typing Effect (Desktop Center) */}
-                <div className="hidden lg:flex lg:flex-1 lg:justify-center lg:items-center px-4">
-                    <TypingEffect
-                        text="Hi! I'm Sean Bodnar, Your Trusted Realtor in Eldersburg & Carroll County, MD"
-                        speed={30}
-                        className="text-sm font-medium text-primary/80 whitespace-nowrap overflow-hidden text-ellipsis max-w-[400px] xl:max-w-none"
-                    />
                 </div>
 
                 {/* Desktop navigation */}
