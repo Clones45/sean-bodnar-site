@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
+import { TypingEffect } from '@/components/TypingEffect';
 
 export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -40,6 +41,15 @@ export default function Header() {
                             <Menu className="h-6 w-6" aria-hidden="true" />
                         )}
                     </button>
+                </div>
+
+                {/* Typing Effect (Desktop Center) */}
+                <div className="hidden lg:flex lg:flex-1 lg:justify-center lg:items-center px-4">
+                    <TypingEffect
+                        text="Hi! I'm Sean Bodnar, Your Trusted Realtor in Eldersburg & Carroll County, MD"
+                        speed={30}
+                        className="text-sm font-medium text-primary/80 whitespace-nowrap overflow-hidden text-ellipsis max-w-[400px] xl:max-w-none"
+                    />
                 </div>
 
                 {/* Desktop navigation */}

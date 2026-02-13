@@ -9,6 +9,13 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {/* Company Info */}
                     <div>
+                        <div className="mb-6">
+                            <img
+                                src="https://img1.wsimg.com/isteam/ip/daf89318-8ad7-4a11-8f4a-b5842fa45c45/images%20(2).png"
+                                alt="Bob Lucido Team Logo"
+                                className="h-16 w-auto object-contain"
+                            />
+                        </div>
                         <h3 className="text-lg font-bold text-primary mb-4">Sean Bodnar - Keller Williams Lucido Agency</h3>
                         <p className="text-sm text-muted-foreground mb-4">
                             Your trusted realtor in Eldersburg, MD. Serving Carroll County, Howard County, and surrounding Maryland communities.

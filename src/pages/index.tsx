@@ -3,6 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { CheckCircle, Home, Users, TrendingUp, MapPin } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { useLocation } from 'react-router-dom';
 
 function ImageCarousel() {
     const images = [
@@ -42,6 +43,20 @@ function ImageCarousel() {
 }
 
 export default function HomePage() {
+    const { hash } = useLocation();
+
+    useEffect(() => {
+        if (hash) {
+            // Small timeout to ensure DOM is ready
+            setTimeout(() => {
+                const element = document.getElementById(hash.replace('#', ''));
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 100);
+        }
+    }, [hash]);
+
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -106,27 +121,31 @@ export default function HomePage() {
                     <div className="absolute inset-0 bg-gradient-to-b from-gray-900/30 to-gray-900/60" />
                     <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-                            Your Trusted Realtor in Eldersburg, MD
+                            Your Trusted Realtor in Eldersburg & Carroll County, MD
                         </h1>
                         <p className="text-xl md:text-2xl text-gray-100 mb-8 max-w-3xl mx-auto">
                             Deep local knowledge meets personalized service. Let's find your perfect home in Carroll County.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <Button size="lg" className="text-lg px-8" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
-                                Start Your Home Search
+                            <Button size="lg" className="text-lg px-8" asChild>
+                                <a href="https://seanbodnar.boblucidoteam.com/buy" target="_blank" rel="noopener noreferrer">
+                                    Start Your Home Search
+                                </a>
                             </Button>
-                            <Button size="lg" variant="outline" className="text-lg px-8 bg-white/10 text-white border-white hover:bg-white hover:text-foreground" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
-                                Get a Market Analysis
+                            <Button size="lg" variant="outline" className="text-lg px-8 bg-white/10 text-white border-white hover:bg-white hover:text-foreground" asChild>
+                                <a href="https://seanbodnar.boblucidoteam.com/valuation" target="_blank" rel="noopener noreferrer">
+                                    Get a Market Analysis
+                                </a>
                             </Button>
                         </div>
                     </div>
                 </section>
 
                 {/* Services Section */}
-                <section className="py-20 bg-background">
+                <section id="services" className="py-20 bg-background">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="text-center mb-16">
-                            <h2 className="text-3xl md:text-4xl font-bold mb-4">My Services</h2>
+                            <h2 className="text-3xl md:text-4xl font-bold mb-4">Real Estate Services in Eldersburg, MD</h2>
                             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                                 Comprehensive real estate services tailored to your unique needs
                             </p>
@@ -189,7 +208,7 @@ export default function HomePage() {
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="grid lg:grid-cols-2 gap-12 items-center">
                             <div>
-                                <h2 className="text-3xl md:text-4xl font-bold mb-6">Why Choose Selling with Sean</h2>
+                                <h2 className="text-3xl md:text-4xl font-bold mb-6">Why Choose Sean as Your Eldersburg Realtor</h2>
                                 <p className="text-lg text-muted-foreground mb-8">
                                     As your local Eldersburg realtor, I bring deep community knowledge and a commitment to personalized, high-touch service that puts your needs first.
                                 </p>
@@ -233,12 +252,29 @@ export default function HomePage() {
                 {/* Areas We Serve */}
                 <section className="py-20 bg-muted">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                        <h2 className="text-3xl md:text-4xl font-bold mb-12">Areas We Serve</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold mb-12">Serving Carroll County, Howard County & Beyond</h2>
                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                            {['Eldersburg', 'Sykesville', 'Gamber', 'Henryton', 'Woodbine', 'New Market', 'Clarksville', 'Ellicott City', 'Carrolltowne', 'Marriottsville'].map((area) => (
-                                <div key={area} className="bg-background p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                                    <p className="font-medium text-primary">{area}</p>
-                                </div>
+                            {[
+                                { name: 'Eldersburg', url: 'https://seanbodnar.boblucidoteam.com/listing?condition=%7B%22location%22%3A%7B%22city%22%3A%5B%22Eldersburg%2C%20MD%22%5D%7D%7D&uiConfig=%7B%7D&zoom=11&page=1' },
+                                { name: 'Sykesville', url: 'https://seanbodnar.boblucidoteam.com/listing?condition=%7B%22location%22%3A%7B%22city%22%3A%5B%22Sykesville%2C%20MD%22%5D%7D%7D&uiConfig=%7B%7D&zoom=10&page=1' },
+                                { name: 'Gamber', url: 'https://seanbodnar.boblucidoteam.com/listing?condition=%7B%22location%22%3A%7B%22subdivision%22%3A%5B%22Gamber%2C%20Sykesville%2C%20MD%22%5D%7D%7D&uiConfig=%7B%7D&zoom=15&page=1' },
+                                { name: 'Henryton', url: 'https://seanbodnar.boblucidoteam.com/listing?condition=%7B%22location%22%3A%7B%22none%22%3A%5B%22Henryton%2C%20MD%22%5D%7D%7D&uiConfig=%7B%7D&zoom=14&page=1' },
+                                { name: 'Woodbine', url: 'https://seanbodnar.boblucidoteam.com/listing?condition=%7B%22location%22%3A%7B%22city%22%3A%5B%22Woodbine%2C%20MD%22%5D%7D%7D&uiConfig=%7B%7D&zoom=11&page=1' },
+                                { name: 'New Market', url: 'https://seanbodnar.boblucidoteam.com/listing?condition=%7B%22location%22%3A%7B%22city%22%3A%5B%22New%20Market%2C%20MD%22%5D%7D%7D&uiConfig=%7B%7D&zoom=10&page=1' },
+                                { name: 'Clarksville', url: 'https://seanbodnar.boblucidoteam.com/listing?condition=%7B%22location%22%3A%7B%22city%22%3A%5B%22Clarksville%2C%20MD%22%5D%7D%7D&uiConfig=%7B%7D&zoom=10&page=1' },
+                                { name: 'Ellicott City', url: 'https://seanbodnar.boblucidoteam.com/listing?condition=%7B%22location%22%3A%7B%22city%22%3A%5B%22Ellicott%20City%2C%20MD%22%5D%7D%7D&uiConfig=%7B%7D&zoom=11&page=1' },
+                                { name: 'Carrolltowne', url: 'https://seanbodnar.boblucidoteam.com/listing?condition=%7B%22location%22%3A%7B%22subdivision%22%3A%5B%22Carrolltowne%2C%20Eldersburg%2C%20MD%22%5D%7D%7D&uiConfig=%7B%7D&zoom=14&page=1' },
+                                { name: 'Marriottsville', url: 'https://seanbodnar.boblucidoteam.com/listing?condition=%7B%22location%22%3A%7B%22city%22%3A%5B%22Marriottsville%2C%20MD%22%5D%7D%7D&uiConfig=%7B%7D&zoom=11&page=1' }
+                            ].map((area) => (
+                                <a
+                                    key={area.name}
+                                    href={area.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="bg-background p-4 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105 block"
+                                >
+                                    <p className="font-medium text-primary">{area.name}</p>
+                                </a>
                             ))}
                         </div>
                     </div>

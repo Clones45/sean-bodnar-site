@@ -3,6 +3,7 @@ import { Component, lazy, ReactElement, ReactNode, Suspense, type ErrorInfo } fr
 import Footer from '@/layouts/parts/Footer';
 import Header from '@/layouts/parts/Header';
 import Website from '@/layouts/Website';
+import { ContactFloat } from '@/components/ContactFloat';
 
 // Lazy load CookieBanner - if blocked by ad blockers, the app continues without it
 const CookieBanner = lazy(() =>
@@ -70,6 +71,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <Header />
             {children}
             <Footer />
+            <ContactFloat />
             <CookieBannerErrorBoundary>
                 <Suspense fallback={null}>
                     <CookieBanner />
