@@ -10,7 +10,14 @@ export default async function handler(req: Request, res: Response) {
   if (!resend) {
     if (!process.env.RESEND_API_KEY) {
       console.error('Missing RESEND_API_KEY');
-      return res.status(500).json({ error: 'Server configuration error' });
+      return res.status(500).json({
+        error: 'Server configuration error: Missing RESEND_API_KEY',
+        env_check: {
+          hasKey: !!process.env.RESEND_API_KEY,
+          hasFrom: !!process.env.FROM_EMAIL,
+          hasContact: !!process.env.CONTACT_EMAIL
+        }
+      });
     }
     resend = new Resend(process.env.RESEND_API_KEY);
   }
@@ -19,11 +26,22 @@ export default async function handler(req: Request, res: Response) {
   }
 
   try {
+    // Debug logging
+    console.log('Request Method:', req.method);
+    console.log('Request Body Type:', typeof req.body);
+
+    if (!req.body) {
+      return res.status(400).json({ error: 'No request body received' });
+    }
+
     const { firstName, lastName, email, phone, interest, message } = req.body;
 
     // Validate required fields
     if (!firstName || !lastName || !email || !interest || !message) {
-      return res.status(400).json({ error: 'Missing required fields' });
+      return res.status(400).json({
+        error: 'Missing required fields',
+        received: { firstName: !!firstName, lastName: !!lastName, email: !!email, interest: !!interest, message: !!message }
+      });
     }
 
     // Format interest label
