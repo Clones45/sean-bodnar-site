@@ -7,23 +7,7 @@ let resend: Resend;
 export default async function handler(req: Request, res: Response) {
   console.log('Contact API hit:', req.method);
 
-  // 1. Health Check / Debug (Allow this even if config is broken)
-  if (req.method === 'GET') {
-    const safeKeys = Object.keys(process.env).filter(key =>
-      !key.includes('KEY') && !key.includes('SECRET') && !key.includes('PASSWORD') && !key.includes('TOKEN')
-    );
-    return res.status(200).json({
-      status: 'API Online',
-      isVercel: !!process.env.VERCEL,
-      vercel_env: process.env.VERCEL_ENV || 'unknown',
-      env_count: Object.keys(process.env).length,
-      resend_key_configured: !!process.env.RESEND_API_KEY,
-      resend_key_length: process.env.RESEND_API_KEY ? process.env.RESEND_API_KEY.length : 0,
-      visible_env_keys: safeKeys
-    });
-  }
-
-  // 2. Initialize Resend (Fail here if missing key for POST)
+  // 1. Initialize Resend
   if (!resend) {
     if (!process.env.RESEND_API_KEY) {
       console.error('Missing RESEND_API_KEY');
@@ -44,10 +28,6 @@ export default async function handler(req: Request, res: Response) {
   }
 
   try {
-    // Debug logging
-    console.log('Request Method:', req.method);
-    console.log('Request Body Type:', typeof req.body);
-
     if (!req.body) {
       return res.status(400).json({ error: 'No request body received' });
     }
@@ -56,10 +36,7 @@ export default async function handler(req: Request, res: Response) {
 
     // Validate required fields
     if (!firstName || !lastName || !email || !interest || !message) {
-      return res.status(400).json({
-        error: 'Missing required fields',
-        received: { firstName: !!firstName, lastName: !!lastName, email: !!email, interest: !!interest, message: !!message }
-      });
+      return res.status(400).json({ error: 'Missing required fields' });
     }
 
     // Format interest label
