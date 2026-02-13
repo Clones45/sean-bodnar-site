@@ -21,6 +21,16 @@ export default async function handler(req: Request, res: Response) {
     }
     resend = new Resend(process.env.RESEND_API_KEY);
   }
+  if (req.method === 'GET') {
+    return res.status(200).json({
+      status: 'API Online',
+      env_check: {
+        hasKey: !!process.env.RESEND_API_KEY,
+        hasFrom: !!process.env.FROM_EMAIL
+      }
+    });
+  }
+
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
