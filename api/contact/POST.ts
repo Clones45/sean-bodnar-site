@@ -1,55 +1,46 @@
 import type { Request, Response } from 'express';
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
+
+// Initialize Resend with API key
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function handler(req: Request, res: Response) {
-    try {
-        const { firstName, lastName, email, phone, interest, message } = req.body;
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
 
-        // Validate required fields
-        if (!firstName || !lastName || !email || !interest || !message) {
-            return res.status(400).json({ error: 'Missing required fields' });
-        }
+  try {
+    const { firstName, lastName, email, phone, interest, message } = req.body;
 
-        // Create email transporter
-        const transport = nodemailer.createTransport({
-            host: process.env.SMTP_HOST || 'localhost',
-            port: parseInt(process.env.SMTP_PORT || '25'),
-            secure: process.env.SMTP_SECURE === 'true',
-            auth: process.env.SMTP_USER ? {
-                user: process.env.SMTP_USER,
-                pass: process.env.SMTP_PASS,
-            } : undefined,
-        });
+    // Validate required fields
+    if (!firstName || !lastName || !email || !interest || !message) {
+      return res.status(400).json({ error: 'Missing required fields' });
+    }
 
-        // Format interest label
-        const interestLabels: Record<string, string> = {
-            buying: 'Buying a Home',
-            selling: 'Selling a Home',
-            'first-time': 'First-Time Home Buyer',
-            luxury: 'Luxury Property',
-            'market-analysis': 'Market Analysis',
-            other: 'Other',
-        };
+    // Format interest label
+    const interestLabels: Record<string, string> = {
+      buying: 'Buying a Home',
+      selling: 'Selling a Home',
+      'first-time': 'First-Time Home Buyer',
+      luxury: 'Luxury Property',
+      'market-analysis': 'Market Analysis',
+      other: 'Other',
+    };
 
-        const interestLabel = interestLabels[interest] || interest;
+    const interestLabel = interestLabels[interest] || interest;
 
-        // Send email to Sean
-        await transport.sendMail({
-            from: process.env.SMTP_FROM || 'noreply@airoapp.ai',
-            to: process.env.CONTACT_EMAIL || 'sean@sellingwithsean.com',
-            subject: `New Contact Form Submission - ${interestLabel}`,
-            text: `
-New Contact Form Submission
+    // Use verified domain email or Resend default for testing
+    // For production with custom domain: 'Contact Form <noreply@sellingwithsean.com>'
+    // For testing without domain: 'onboarding@resend.dev'
+    const fromEmail = process.env.FROM_EMAIL || 'noreply@sellingwithsean.com';
+    const toEmail = process.env.CONTACT_EMAIL || 'seanbodnar@boblucidoteam.com';
 
-Name: ${firstName} ${lastName}
-Email: ${email}
-Phone: ${phone || 'Not provided'}
-Interested in: ${interestLabel}
-
-Message:
-${message}
-      `,
-            html: `
+    // 1. Send notification email to Sean
+    await resend.emails.send({
+      from: `Contact Form <${fromEmail}>`,
+      to: toEmail,
+      subject: `New Contact Form Submission - ${interestLabel}`,
+      html: `
 <!DOCTYPE html>
 <html>
 <head>
@@ -89,27 +80,15 @@ ${message}
   </div>
 </body>
 </html>
-      `,
-        });
+            `,
+    });
 
-        // Send confirmation email to the client
-        await transport.sendMail({
-            from: process.env.SMTP_FROM || 'noreply@airoapp.ai',
-            to: email,
-            subject: 'Thank you for contacting Selling with Sean',
-            text: `
-Hi ${firstName},
-
-Thank you for reaching out! I've received your message and will get back to you within 24 hours.
-
-In the meantime, feel free to call me at (410) 940-3032 if you have any urgent questions.
-
-Best regards,
-Sean Bodnar
-Keller Williams Lucido Agency
-Your Trusted Realtor in Eldersburg, MD
-      `,
-            html: `
+    // 2. Send confirmation email to the client
+    await resend.emails.send({
+      from: `Sean Bodnar <${fromEmail}>`,
+      to: email, // This only works if domain is verified. If testing with onboarding@resend.dev, can only send to verified email.
+      subject: 'Thank you for contacting Selling with Sean',
+      html: `
 <!DOCTYPE html>
 <html>
 <head>
@@ -140,12 +119,12 @@ Your Trusted Realtor in Eldersburg, MD
   </div>
 </body>
 </html>
-      `,
-        });
+            `,
+    });
 
-        res.status(200).json({ success: true, message: 'Message sent successfully' });
-    } catch (error) {
-        console.error('Contact form error:', error);
-        res.status(500).json({ error: 'Failed to send message', message: String(error) });
-    }
+    res.status(200).json({ success: true, message: 'Message sent successfully' });
+  } catch (error) {
+    console.error('Contact form error:', error);
+    res.status(500).json({ error: 'Failed to send message', message: String(error) });
+  }
 }
