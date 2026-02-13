@@ -8,10 +8,6 @@
             "destination": "/api/$1"
         },
         {
-            "source": "/(sitemap.xml|robots.txt|favicon.ico)",
-            "destination": "/$1"
-        },
-        {
             "source": "/((?!api/|sitemap.xml|robots.txt|favicon.ico).*)",
             "destination": "/index.html"
         }
