@@ -7,6 +7,23 @@ let resend: Resend;
 export default async function handler(req: Request, res: Response) {
   console.log('Contact API hit:', req.method);
 
+  // 1. Health Check / Debug (Allow this even if config is broken)
+  if (req.method === 'GET') {
+    const safeKeys = Object.keys(process.env).filter(key =>
+      !key.includes('KEY') && !key.includes('SECRET') && !key.includes('PASSWORD') && !key.includes('TOKEN')
+    );
+    return res.status(200).json({
+      status: 'API Online',
+      isVercel: !!process.env.VERCEL,
+      vercel_env: process.env.VERCEL_ENV || 'unknown',
+      env_count: Object.keys(process.env).length,
+      resend_key_configured: !!process.env.RESEND_API_KEY,
+      resend_key_length: process.env.RESEND_API_KEY ? process.env.RESEND_API_KEY.length : 0,
+      visible_env_keys: safeKeys
+    });
+  }
+
+  // 2. Initialize Resend (Fail here if missing key for POST)
   if (!resend) {
     if (!process.env.RESEND_API_KEY) {
       console.error('Missing RESEND_API_KEY');
@@ -20,18 +37,6 @@ export default async function handler(req: Request, res: Response) {
       });
     }
     resend = new Resend(process.env.RESEND_API_KEY);
-  }
-  if (req.method === 'GET') {
-    const safeKeys = Object.keys(process.env).filter(key =>
-      !key.includes('KEY') && !key.includes('SECRET') && !key.includes('PASSWORD') && !key.includes('TOKEN')
-    );
-    return res.status(200).json({
-      status: 'API Online',
-      isVercel: !!process.env.VERCEL,
-      env_count: Object.keys(process.env).length,
-      resend_key_length: process.env.RESEND_API_KEY ? process.env.RESEND_API_KEY.length : 0,
-      visible_env_keys: safeKeys
-    });
   }
 
   if (req.method !== 'POST') {
