@@ -11,7 +11,7 @@ export default function Footer() {
                     <div>
                         <h3 className="text-lg font-bold text-primary mb-4">Sean Bodnar - Keller Williams Lucido Agency</h3>
                         <p className="text-sm text-muted-foreground mb-4">
-                            Your trusted realtor in Eldersburg, MD. Serving Carroll County with personalized, high-touch service.
+                            Your trusted realtor in Eldersburg, MD. Serving Carroll County, Howard County, and surrounding Maryland communities.
                         </p>
                     </div>
 
@@ -63,11 +63,17 @@ export default function Footer() {
                             </li>
                             <li className="flex items-start gap-2">
                                 <Phone className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                                <a href="tel:+14109403032" className="text-sm text-muted-foreground hover:text-primary transition-colors">(410) 940-3032</a>
+                                <div className="flex flex-col">
+                                    <a href="tel:+14109403032" className="text-sm text-muted-foreground hover:text-primary transition-colors">Direct: (410) 940-3032</a>
+                                    <a href="tel:+14104656900" className="text-sm text-muted-foreground hover:text-primary transition-colors">Office: (410) 465-6900</a>
+                                </div>
                             </li>
                             <li className="flex items-start gap-2">
                                 <MapPin className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                                <span className="text-sm text-muted-foreground">Serving Eldersburg, MD<br />Carroll County & Surrounding Areas</span>
+                                <span className="text-sm text-muted-foreground">
+                                    Serving Eldersburg, Sykesville, Howard County & Surrounding Areas<br />
+                                    <span className="text-xs opacity-75">21784, 21048, 21104, 21797, 21774, 21029, 21042</span>
+                                </span>
                             </li>
                         </ul>
                     </div>

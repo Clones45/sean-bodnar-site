@@ -93,12 +93,6 @@ export default function HomePage() {
 
     return (
         <>
-            <title>Selling with Sean | Professional Realtor in Eldersburg, MD</title>
-            <meta
-                name="description"
-                content="Expert real estate services in Eldersburg and Carroll County, MD. Specializing in residential sales, first-time buyers, luxury properties, and local market expertise."
-            />
-
             <div className="flex flex-col">
                 {/* Hero Section */}
                 <section className="relative min-h-[600px] flex items-center justify-center">
@@ -118,10 +112,10 @@ export default function HomePage() {
                             Deep local knowledge meets personalized service. Let's find your perfect home in Carroll County.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <Button size="lg" className="text-lg px-8">
+                            <Button size="lg" className="text-lg px-8" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
                                 Start Your Home Search
                             </Button>
-                            <Button size="lg" variant="outline" className="text-lg px-8 bg-white/10 text-white border-white hover:bg-white hover:text-foreground">
+                            <Button size="lg" variant="outline" className="text-lg px-8 bg-white/10 text-white border-white hover:bg-white hover:text-foreground" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
                                 Get a Market Analysis
                             </Button>
                         </div>
@@ -236,13 +230,59 @@ export default function HomePage() {
                     </div>
                 </section>
 
+                {/* Areas We Serve */}
+                <section className="py-20 bg-muted">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                        <h2 className="text-3xl md:text-4xl font-bold mb-12">Areas We Serve</h2>
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                            {['Eldersburg', 'Sykesville', 'Gamber', 'Henryton', 'Woodbine', 'New Market', 'Clarksville', 'Ellicott City', 'Carrolltowne', 'Marriottsville'].map((area) => (
+                                <div key={area} className="bg-background p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                                    <p className="font-medium text-primary">{area}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* Location Map */}
+                <section className="py-20 bg-background">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="text-center mb-12">
+                            <h2 className="text-3xl md:text-4xl font-bold mb-4">Visit Our Office</h2>
+                            <div className="mb-6">
+                                <p className="text-xl text-muted-foreground font-medium">
+                                    Sean Bodnar - Keller Williams Lucido Agency
+                                </p>
+                                <a href="https://www.google.com/search?q=Sean+Bodnar+Keller+Williams+Lucido+Agency+Reviews" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline inline-flex items-center gap-2 mt-2">
+                                    <span className="font-semibold">Read our 5-Star Reviews on Google</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div className="w-full h-[450px] rounded-lg overflow-hidden shadow-lg bg-muted border border-border">
+                            <iframe
+                                src="https://maps.google.com/maps?q=Sean+Bodnar+-+Keller+Williams+Lucido+Agency%2C+6229+Sykesville+Rd%2C+Eldersburg%2C+MD+21784&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                                width="100%"
+                                height="100%"
+                                style={{ border: 0 }}
+                                allowFullScreen
+                                loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
+                                title="Sean Bodnar Office Location"
+                            ></iframe>
+                        </div>
+                    </div>
+                </section>
+
                 {/* Contact Form Section */}
-                <section id="contact" className="py-20 bg-background">
+                <section id="contact" className="py-20 bg-muted">
                     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="text-center mb-12">
                             <h2 className="text-3xl md:text-4xl font-bold mb-4">Contact Sean Bodnar - Keller Williams Lucido Agency</h2>
+                            <p className="text-lg font-medium text-primary mb-6">
+                                Specializing in homes across Eldersburg, Ellicott City, and surrounding Maryland communities.
+                            </p>
                             <p className="text-xl text-muted-foreground">
-                                Ready to make your move? Fill out the form below and I'll get back to you within 24 hours.
+                                Ready to make your move? Call <a href="tel:4109403032" className="text-primary hover:underline font-semibold">(410) 940-3032</a> or fill out the form below.
                             </p>
                         </div>
 

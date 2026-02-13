@@ -23,7 +23,7 @@
         "forceConsistentCasingInFileNames": true,
         "paths": {
             "@/api/*": [
-                "./src/server/api/*"
+                "./src/api/*"
             ],
             "@/*": [
                 "./src/*"

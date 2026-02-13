@@ -1,8 +1,6 @@
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
-
-import apiRoutes from "vite-plugin-api-routes";
 
 const allowedHosts: string[] = [];
 if (process.env.FRONTEND_DOMAIN) {
@@ -29,21 +27,62 @@ export default defineConfig(({ mode }) => ({
                 plugins: [],
             },
         }),
-        apiRoutes({
-            mode: "isolated",
-            configure: "src/server/configure.js",
-            dirs: [{ dir: "./api", route: "" }],
-            forceRestart: mode === "development",
-        }),
-        // ...(mode === "development"
-        //     ? [devToolsPlugin() as Plugin, fullStoryPlugin()]
-        //     : []),
+        {
+            name: 'manual-contact-middleware',
+            configureServer(server) {
+                const env = loadEnv(mode, process.cwd(), '');
+                process.env.RESEND_API_KEY = env.RESEND_API_KEY;
+                process.env.FROM_EMAIL = env.FROM_EMAIL;
+                process.env.CONTACT_EMAIL = env.CONTACT_EMAIL;
+
+                server.middlewares.use(async (req, res, next) => {
+                    if (req.url === '/api/contact' && req.method === 'POST') {
+                        console.log('[Middleware] Intercepted POST /api/contact');
+
+                        // Body parsing
+                        const buffers = [];
+                        for await (const chunk of req) {
+                            buffers.push(chunk);
+                        }
+                        const data = Buffer.concat(buffers).toString();
+
+                        // Mock Express req/res
+                        try {
+                            (req as any).body = JSON.parse(data);
+                        } catch (e) {
+                            (req as any).body = {};
+                        }
+
+                        (res as any).status = (code: number) => {
+                            res.statusCode = code;
+                            return res;
+                        };
+                        (res as any).json = (body: any) => {
+                            res.setHeader('Content-Type', 'application/json');
+                            res.end(JSON.stringify(body));
+                            return res;
+                        };
+
+                        try {
+                            // Dynamic import to avoid build-time issues if possible, or direct if supported
+                            const { POST } = await import('./src/api/contact/index.ts');
+                            await POST(req as any, res as any);
+                        } catch (error) {
+                            console.error('Middleware Error:', error);
+                            (res as any).status(500).json({ error: String(error) });
+                        }
+                        return;
+                    }
+                    next();
+                });
+            }
+        },
     ],
 
     resolve: {
         alias: {
             nothing: "/src/fallbacks/missingModule.ts",
-            "@/api": path.resolve(__dirname, "./api"),
+            "@/api": path.resolve(__dirname, "./src/api"),
             "@": path.resolve(__dirname, "./src"),
         },
     },

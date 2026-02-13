@@ -4,7 +4,7 @@ import { Resend } from 'resend';
 // Initialize Resend with API key
 let resend: Resend;
 
-export default async function handler(req: Request, res: Response) {
+export const POST = async (req: Request, res: Response) => {
   console.log('Contact API hit:', req.method);
 
   if (!resend) {
