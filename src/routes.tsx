@@ -1,0 +1,27 @@
+import { RouteObject } from 'react-router-dom';
+import { lazy } from 'react';
+import HomePage from './pages/index';
+import AboutPage from './pages/about';
+
+// Lazy load components for code splitting (except HomePage for instant loading)
+const NotFoundPage = lazy(() => import('./pages/_404'));
+
+export const routes: RouteObject[] = [
+    {
+        path: '/',
+        element: <HomePage />,
+    },
+    {
+        path: '/about',
+        element: <AboutPage />,
+    },
+    {
+        path: '*',
+        element: <NotFoundPage />,
+    },
+];
+
+// Types for type-safe navigation
+export type Path = '/' | '/about';
+
+export type Params = Record<string, string | undefined>;
