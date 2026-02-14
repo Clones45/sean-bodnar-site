@@ -289,7 +289,7 @@ export default function HomePage() {
                                 <p className="text-xl text-muted-foreground font-medium">
                                     Sean Bodnar - Keller Williams Lucido Agency
                                 </p>
-                                <a href="https://www.google.com/search?q=Sean+Bodnar+Keller+Williams+Lucido+Agency+Reviews" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline inline-flex items-center gap-2 mt-2">
+                                <a href="https://www.google.com/search?q=realtor+in+eldersburg+md&sca_esv=d7358c9ad4b11281&sxsrf=ANbL-n44oMyhs5fCOYHSdIATzGllS0eOdQ:1771077854879&udm=1&lsack=3oCQadKoNefi2roP14O-0Ag&sa=X&ved=2ahUKEwjSj6OTk9mSAxVnsVYBHdeBD4oQjGp6BAgsEAA&biw=1920&bih=953&dpr=1&lqi=ChhyZWFsdG9yIGluIGVsZGVyc2J1cmcgbWRI2MjQi_S6gIAIWiAQABgCGAMiGHJlYWx0b3IgaW4gZWxkZXJzYnVyZyBtZHoKRWxkZXJzYnVyZ5IBEnJlYWxfZXN0YXRlX2FnZW50c5oBI0NoWkRTVWhOTUc5blMwVlBRMGR5ZFdsUE5XOWZWR0ZCRUFF-gEFCLECEEs#lkt=LocalPoiReviews&rlimm=5331825905854139026&lrd=" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline inline-flex items-center gap-2 mt-2">
                                     <span className="font-semibold">Read our 5-Star Reviews on Google</span>
                                 </a>
                             </div>
