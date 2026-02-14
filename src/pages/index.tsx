@@ -253,28 +253,88 @@ export default function HomePage() {
                 <section className="py-20 bg-muted">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                         <h2 className="text-3xl md:text-4xl font-bold mb-12">Serving Carroll County, Howard County & Beyond</h2>
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                             {[
-                                { name: 'Eldersburg', url: 'https://seanbodnar.boblucidoteam.com/listing?condition=%7B%22location%22%3A%7B%22city%22%3A%5B%22Eldersburg%2C%20MD%22%5D%7D%7D&uiConfig=%7B%7D&zoom=11&page=1' },
-                                { name: 'Sykesville', url: 'https://seanbodnar.boblucidoteam.com/listing?condition=%7B%22location%22%3A%7B%22city%22%3A%5B%22Sykesville%2C%20MD%22%5D%7D%7D&uiConfig=%7B%7D&zoom=10&page=1' },
-                                { name: 'Gamber', url: 'https://seanbodnar.boblucidoteam.com/listing?condition=%7B%22location%22%3A%7B%22subdivision%22%3A%5B%22Gamber%2C%20Sykesville%2C%20MD%22%5D%7D%7D&uiConfig=%7B%7D&zoom=15&page=1' },
-                                { name: 'Henryton', url: 'https://seanbodnar.boblucidoteam.com/listing?condition=%7B%22location%22%3A%7B%22none%22%3A%5B%22Henryton%2C%20MD%22%5D%7D%7D&uiConfig=%7B%7D&zoom=14&page=1' },
-                                { name: 'Woodbine', url: 'https://seanbodnar.boblucidoteam.com/listing?condition=%7B%22location%22%3A%7B%22city%22%3A%5B%22Woodbine%2C%20MD%22%5D%7D%7D&uiConfig=%7B%7D&zoom=11&page=1' },
-                                { name: 'New Market', url: 'https://seanbodnar.boblucidoteam.com/listing?condition=%7B%22location%22%3A%7B%22city%22%3A%5B%22New%20Market%2C%20MD%22%5D%7D%7D&uiConfig=%7B%7D&zoom=10&page=1' },
-                                { name: 'Clarksville', url: 'https://seanbodnar.boblucidoteam.com/listing?condition=%7B%22location%22%3A%7B%22city%22%3A%5B%22Clarksville%2C%20MD%22%5D%7D%7D&uiConfig=%7B%7D&zoom=10&page=1' },
-                                { name: 'Ellicott City', url: 'https://seanbodnar.boblucidoteam.com/listing?condition=%7B%22location%22%3A%7B%22city%22%3A%5B%22Ellicott%20City%2C%20MD%22%5D%7D%7D&uiConfig=%7B%7D&zoom=11&page=1' },
-                                { name: 'Carrolltowne', url: 'https://seanbodnar.boblucidoteam.com/listing?condition=%7B%22location%22%3A%7B%22subdivision%22%3A%5B%22Carrolltowne%2C%20Eldersburg%2C%20MD%22%5D%7D%7D&uiConfig=%7B%7D&zoom=14&page=1' },
-                                { name: 'Marriottsville', url: 'https://seanbodnar.boblucidoteam.com/listing?condition=%7B%22location%22%3A%7B%22city%22%3A%5B%22Marriottsville%2C%20MD%22%5D%7D%7D&uiConfig=%7B%7D&zoom=11&page=1' }
+                                {
+                                    name: 'Eldersburg',
+                                    url: 'https://seanbodnar.boblucidoteam.com/listing?condition=%7B%22location%22%3A%7B%22city%22%3A%5B%22Eldersburg%2C%20MD%22%5D%7D%7D&uiConfig=%7B%7D&zoom=11&page=1',
+                                    image: '/assets/photos/Eldersburg.jpg'
+                                },
+                                {
+                                    name: 'Sykesville',
+                                    url: 'https://seanbodnar.boblucidoteam.com/listing?condition=%7B%22location%22%3A%7B%22city%22%3A%5B%22Sykesville%2C%20MD%22%5D%7D%7D&uiConfig=%7B%7D&zoom=10&page=1',
+                                    image: '/assets/photos/sykesville.jfif'
+                                },
+                                {
+                                    name: 'Ellicott City',
+                                    url: 'https://seanbodnar.boblucidoteam.com/listing?condition=%7B%22location%22%3A%7B%22city%22%3A%5B%22Ellicott%20City%2C%20MD%22%5D%7D%7D&uiConfig=%7B%7D&zoom=11&page=1',
+                                    image: '/assets/photos/EllicottCity.jpg'
+                                },
+                                {
+                                    name: 'Clarksville',
+                                    url: 'https://seanbodnar.boblucidoteam.com/listing?condition=%7B%22location%22%3A%7B%22city%22%3A%5B%22Clarksville%2C%20MD%22%5D%7D%7D&uiConfig=%7B%7D&zoom=10&page=1',
+                                    image: '/assets/photos/Clarksville.jfif'
+                                },
+                                {
+                                    name: 'Woodbine',
+                                    url: 'https://seanbodnar.boblucidoteam.com/listing?condition=%7B%22location%22%3A%7B%22city%22%3A%5B%22Woodbine%2C%20MD%22%5D%7D%7D&uiConfig=%7B%7D&zoom=11&page=1',
+                                    image: '/assets/photos/woodbine.jpg'
+                                },
+                                {
+                                    name: 'New Market',
+                                    url: 'https://seanbodnar.boblucidoteam.com/listing?condition=%7B%22location%22%3A%7B%22city%22%3A%5B%22New%20Market%2C%20MD%22%5D%7D%7D&uiConfig=%7B%7D&zoom=10&page=1',
+                                    image: '/assets/photos/New%20Market.jpg'
+                                },
+                                {
+                                    name: 'Gamber',
+                                    url: 'https://seanbodnar.boblucidoteam.com/listing?condition=%7B%22location%22%3A%7B%22subdivision%22%3A%5B%22Gamber%2C%20Sykesville%2C%20MD%22%5D%7D%7D&uiConfig=%7B%7D&zoom=15&page=1',
+                                    image: '/assets/photos/Gamber.jpg'
+                                },
+                                {
+                                    name: 'Marriottsville',
+                                    url: 'https://seanbodnar.boblucidoteam.com/listing?condition=%7B%22location%22%3A%7B%22city%22%3A%5B%22Marriottsville%2C%20MD%22%5D%7D%7D&uiConfig=%7B%7D&zoom=11&page=1',
+                                    image: '/assets/photos/Marriottsville.jfif'
+                                },
+                                {
+                                    name: 'Carrolltowne',
+                                    url: 'https://seanbodnar.boblucidoteam.com/listing?condition=%7B%22location%22%3A%7B%22subdivision%22%3A%5B%22Carrolltowne%2C%20Eldersburg%2C%20MD%22%5D%7D%7D&uiConfig=%7B%7D&zoom=14&page=1',
+                                    image: '/assets/photos/Carrolltowne.jpg'
+                                }
                             ].map((area) => (
-                                <a
+                                <motion.a
                                     key={area.name}
                                     href={area.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="bg-background p-4 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105 block"
+                                    className="group relative h-64 rounded-xl overflow-hidden cursor-pointer shadow-lg"
+                                    whileHover="hover"
                                 >
-                                    <p className="font-medium text-primary">{area.name}</p>
-                                </a>
+                                    <motion.div
+                                        className="absolute inset-0 bg-cover bg-center"
+                                        style={{ backgroundImage: `url(${area.image})` }}
+                                        variants={{
+                                            hover: { scale: 1.1 }
+                                        }}
+                                        transition={{ duration: 0.6 }}
+                                    />
+                                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors duration-300" />
+
+                                    <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
+                                        <h3 className="text-3xl font-serif text-white mb-4 drop-shadow-md tracking-wider uppercase">{area.name}</h3>
+
+                                        <motion.div
+                                            initial={{ opacity: 0, y: 20 }}
+                                            variants={{
+                                                hover: { opacity: 1, y: 0 }
+                                            }}
+                                            transition={{ duration: 0.3 }}
+                                        >
+                                            <span className="inline-block px-8 py-3 border-2 border-white text-white text-sm font-bold tracking-widest uppercase hover:bg-white hover:text-black transition-colors duration-300">
+                                                Learn More
+                                            </span>
+                                        </motion.div>
+                                    </div>
+                                </motion.a>
                             ))}
                         </div>
                     </div>
