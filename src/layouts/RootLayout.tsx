@@ -4,6 +4,7 @@ import Footer from '@/layouts/parts/Footer';
 import Header from '@/layouts/parts/Header';
 import Website from '@/layouts/Website';
 import { ContactFloat } from '@/components/ContactFloat';
+import { SEOSchema } from '@/components/SEOSchema';
 
 // Lazy load CookieBanner - if blocked by ad blockers, the app continues without it
 const CookieBanner = lazy(() =>
@@ -69,6 +70,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     return (
         <Website>
             <Header />
+            <SEOSchema />
             {children}
             <Footer />
             <ContactFloat />

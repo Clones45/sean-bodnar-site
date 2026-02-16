@@ -36,6 +36,8 @@ function ImageCarousel() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.8 }}
+                    loading="lazy"
+                    decoding="async"
                 />
             </AnimatePresence>
         </div>
@@ -111,14 +113,16 @@ export default function HomePage() {
             <div className="flex flex-col">
                 {/* Hero Section */}
                 <section className="relative min-h-[600px] flex items-center justify-center">
-                    <div
-                        className="absolute inset-0 bg-cover bg-center"
-                        style={{
-                            backgroundImage:
-                                'url(https://img1.wsimg.com/isteam/ip/daf89318-8ad7-4a11-8f4a-b5842fa45c45/401845630_311528424972365_6482679109257298931_.jpg)',
-                        }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-b from-gray-900/30 to-gray-900/60" />
+                    <div className="absolute inset-0">
+                        <img
+                            src="https://img1.wsimg.com/isteam/ip/daf89318-8ad7-4a11-8f4a-b5842fa45c45/401845630_311528424972365_6482679109257298931_.jpg"
+                            alt="Sean Bodnar - Realtor in Eldersburg, MD and Carroll County"
+                            className="w-full h-full object-cover"
+                            loading="eager"
+                            fetchPriority="high"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-b from-gray-900/30 to-gray-900/60" />
+                    </div>
                     <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
                             Your Trusted Realtor in Eldersburg & Carroll County, MD

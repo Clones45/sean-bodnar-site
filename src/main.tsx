@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { HelmetProvider } from '@dr.pogodin/react-helmet';
 import App from './App';
 import './styles/globals.css';
 
@@ -35,7 +36,9 @@ const root = ReactDOM.createRoot(rootElement);
 root.render(
     <React.StrictMode>
         <QueryClientProvider client={queryClient}>
-            <App />
+            <HelmetProvider>
+                <App />
+            </HelmetProvider>
         </QueryClientProvider>
     </React.StrictMode>
 );

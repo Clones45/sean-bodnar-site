@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Phone, X, MessageCircle } from 'lucide-react';
+import { useState } from 'react';
+import { Phone, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export function ContactFloat() {
