@@ -1,40 +1,16 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { CheckCircle, Award, Users, TrendingUp, Home } from 'lucide-react';
+import { SEO } from '@/components/SEO';
 
 export default function AboutPage() {
     return (
         <>
-            <title>About Sean | Selling with Sean - Eldersburg Realtor</title>
-            <meta
-                name="description"
-                content="Meet Sean, your trusted real estate professional in Eldersburg, MD. Learn about my experience, local expertise, and commitment to helping you find your dream home."
+            <SEO
+                title="About Sean"
+                description="Meet Sean, your trusted real estate professional in Eldersburg, MD. Learn about my experience, local expertise, and commitment to helping you find your dream home."
+                canonical="https://www.sellingwithsean.com/about"
             />
-            <script type="application/ld+json">
-                {JSON.stringify({
-                    "@context": "https://schema.org",
-                    "@type": "RealEstateAgent",
-                    "name": "Sean Bodnar - Keller Williams Lucido Agency",
-                    "image": "https://img1.wsimg.com/isteam/ip/daf89318-8ad7-4a11-8f4a-b5842fa45c45/401845630_311528424972365_6482679109257298931_.jpg",
-                    "url": "https://www.sellingwithsean.com/about/",
-                    "telephone": "+14109403032",
-                    "priceRange": "$$$",
-                    "address": {
-                        "@type": "PostalAddress",
-                        "streetAddress": "6229 Sykesville Rd",
-                        "addressLocality": "Eldersburg",
-                        "addressRegion": "MD",
-                        "postalCode": "21784",
-                        "addressCountry": "US"
-                    },
-                    "areaServed": [
-                        "Eldersburg",
-                        "Sykesville",
-                        "Carroll County",
-                        "Howard County"
-                    ]
-                })}
-            </script>
 
             <div className="min-h-screen">
                 {/* Hero Section */}

@@ -4,6 +4,7 @@ import { CheckCircle, Home, Users, TrendingUp, MapPin } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useLocation } from 'react-router-dom';
+import { SEO } from '@/components/SEO';
 
 function ImageCarousel() {
     const images = [
@@ -110,6 +111,11 @@ export default function HomePage() {
 
     return (
         <>
+            <SEO
+                title="Your Trusted Realtor in Eldersburg & Carroll County, MD"
+                description="Sean Bodnar - Keller Williams Lucido Agency. Trusted Realtor in Eldersburg, Sykesville & Howard County, MD. Call (410) 940-3032 for a free market analysis."
+                canonical="https://www.sellingwithsean.com"
+            />
             <div className="flex flex-col">
                 {/* Hero Section */}
                 <section className="relative min-h-[600px] flex items-center justify-center">
