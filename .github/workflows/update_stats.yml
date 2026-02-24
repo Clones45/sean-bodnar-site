@@ -1,0 +1,47 @@
+name: Update SEO Stats
+
+on:
+  schedule:
+    # Run daily at 06:00 UTC (02:00 EST / 01:00 EDT)
+    - cron: '0 6 * * *'
+  # Allow manual trigger from the GitHub Actions tab
+  workflow_dispatch:
+
+jobs:
+  scrape-and-commit:
+    name: Scrape GBP Data
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    permissions:
+      contents: write   # Required to commit the updated JSON back
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Python dependencies
+        run: pip install scrapling playwright
+
+      - name: Install Playwright browsers
+        run: playwright install chromium --with-deps
+
+      - name: Run SEO scraper
+        env:
+          SEARCH_KEYWORD: "Realtor in Eldersburg"
+          TARGET_NAME: "Sean Bodnar"
+          OUTPUT_PATH: "public/data/seo_stats.json"
+        run: python scripts/fetch_gbp_data.py
+
+      - name: Commit updated seo_stats.json
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(seo): update seo_stats.json [skip ci]"
+          file_pattern: "public/data/seo_stats.json"
+          commit_author: "GitHub Actions <actions@github.com>"
