@@ -129,7 +129,7 @@ export default function HomePage() {
                         />
                         <div className="absolute inset-0 bg-gradient-to-b from-gray-900/30 to-gray-900/60" />
                     </div>
-                    <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
                             Your Trusted Realtor in Eldersburg & Carroll County, MD
                         </h1>

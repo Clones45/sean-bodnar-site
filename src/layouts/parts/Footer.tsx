@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Star, TrendingUp } from 'lucide-react';
+import { Mail, Phone, MapPin, Star } from 'lucide-react';
 import { useSeoStats } from '@/hooks/useSeoStats';
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
@@ -30,32 +30,7 @@ function AuthorAvatar({ name }: { name: string }) {
     );
 }
 
-// ── Live Rank Badge ───────────────────────────────────────────────────────────
-
-function LiveRankBadge() {
-    const { data, loading } = useSeoStats();
-
-    if (loading || !data || data.status === 'pending') return null;
-    // Fail-safe: hide badge if we have no actual rank number
-    if (!data.rank) return null;
-
-    const rankLabel =
-        data.rank === 1
-            ? '#1 on Google Maps'
-            : `Ranked #${data.rank} on Google Maps`;
-
-    return (
-        <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-primary/10 border border-primary/20 px-3 py-1 text-xs font-medium text-primary">
-            {/* Pulsing live dot */}
-            <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
-            </span>
-            <TrendingUp className="w-3 h-3" />
-            {rankLabel}
-        </div>
-    );
-}
+import { LiveRankBadge } from '@/components/LiveRankBadge';
 
 // ── Reviews Column ────────────────────────────────────────────────────────────
 

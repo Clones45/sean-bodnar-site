@@ -1,8 +1,14 @@
 {
     "rank": null,
-    "average_rating": null,
-    "review_count": null,
-    "reviews": [],
-    "last_updated": null,
-    "status": "pending"
+    "average_rating": 5.0,
+    "review_count": 42,
+    "reviews": [
+        {
+            "author": "Jane Doe",
+            "text": "Sean was amazing to work with! Highly recommend.",
+            "rating": 5
+        }
+    ],
+    "last_updated": "2026-02-27T12:00:00Z",
+    "status": "ok"
 }
