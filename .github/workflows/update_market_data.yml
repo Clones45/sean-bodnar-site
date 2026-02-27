@@ -1,0 +1,44 @@
+name: Update MD Market Stats
+
+on:
+  schedule:
+    # Run weekly on Sunday at 07:00 UTC
+    - cron: '0 7 * * 0'
+  workflow_dispatch:
+
+jobs:
+  scrape-and-commit:
+    name: Scrape MD Market Data
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Python dependencies
+        run: pip install scrapling playwright
+
+      - name: Install Playwright browsers
+        run: playwright install chromium --with-deps
+
+      - name: Run market data scraper
+        env:
+          OUTPUT_PATH: "public/data/md_market_stats.json"
+        run: python scripts/fetch_market_data.py
+
+      - name: Commit updated md_market_stats.json
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(data): update md_market_stats.json [skip ci]"
+          file_pattern: "public/data/md_market_stats.json"
+          commit_author: "GitHub Actions <actions@github.com>"

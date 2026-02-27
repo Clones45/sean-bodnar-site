@@ -162,53 +162,61 @@ export default function HomePage() {
                         </div>
 
                         <div className="grid md:grid-cols-2 gap-8">
-                            <Card className="border-2 hover:border-primary transition-colors">
-                                <CardContent className="pt-6">
-                                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                                        <Home className="w-6 h-6 text-primary" />
-                                    </div>
-                                    <h3 className="text-xl font-semibold mb-3">Residential Home Sales</h3>
-                                    <p className="text-muted-foreground">
-                                        Expert guidance through every step of selling your home, from pricing strategy to closing day
-                                    </p>
-                                </CardContent>
-                            </Card>
+                            <a href="/services/residential-sales" className="block h-full outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-xl">
+                                <Card className="border-2 hover:border-primary transition-colors h-full cursor-pointer hover:shadow-md">
+                                    <CardContent className="pt-6">
+                                        <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                                            <Home className="w-6 h-6 text-primary" />
+                                        </div>
+                                        <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">Residential Home Sales</h3>
+                                        <p className="text-muted-foreground">
+                                            Expert guidance through every step of selling your home, from pricing strategy to closing day
+                                        </p>
+                                    </CardContent>
+                                </Card>
+                            </a>
 
-                            <Card className="border-2 hover:border-primary transition-colors">
-                                <CardContent className="pt-6">
-                                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                                        <Users className="w-6 h-6 text-primary" />
-                                    </div>
-                                    <h3 className="text-xl font-semibold mb-3">First-Time Home Buyer Representation</h3>
-                                    <p className="text-muted-foreground">
-                                        Patient, personalized support to help first-time buyers navigate the home buying process with confidence
-                                    </p>
-                                </CardContent>
-                            </Card>
+                            <a href="/services/first-time-buyers" className="block h-full outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-xl">
+                                <Card className="border-2 hover:border-primary transition-colors h-full cursor-pointer hover:shadow-md">
+                                    <CardContent className="pt-6">
+                                        <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                                            <Users className="w-6 h-6 text-primary" />
+                                        </div>
+                                        <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">First-Time Home Buyer Representation</h3>
+                                        <p className="text-muted-foreground">
+                                            Patient, personalized support to help first-time buyers navigate the home buying process with confidence
+                                        </p>
+                                    </CardContent>
+                                </Card>
+                            </a>
 
-                            <Card className="border-2 hover:border-primary transition-colors">
-                                <CardContent className="pt-6">
-                                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                                        <TrendingUp className="w-6 h-6 text-primary" />
-                                    </div>
-                                    <h3 className="text-xl font-semibold mb-3">Luxury Property Marketing</h3>
-                                    <p className="text-muted-foreground">
-                                        Sophisticated marketing strategies to showcase high-end properties and attract qualified buyers
-                                    </p>
-                                </CardContent>
-                            </Card>
+                            <a href="/services/luxury-properties" className="block h-full outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-xl">
+                                <Card className="border-2 hover:border-primary transition-colors h-full cursor-pointer hover:shadow-md">
+                                    <CardContent className="pt-6">
+                                        <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                                            <TrendingUp className="w-6 h-6 text-primary" />
+                                        </div>
+                                        <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">Luxury Property Marketing</h3>
+                                        <p className="text-muted-foreground">
+                                            Sophisticated marketing strategies to showcase high-end properties and attract qualified buyers
+                                        </p>
+                                    </CardContent>
+                                </Card>
+                            </a>
 
-                            <Card className="border-2 hover:border-primary transition-colors">
-                                <CardContent className="pt-6">
-                                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                                        <MapPin className="w-6 h-6 text-primary" />
-                                    </div>
-                                    <h3 className="text-xl font-semibold mb-3">Local Market Analysis</h3>
-                                    <p className="text-muted-foreground">
-                                        In-depth knowledge of Eldersburg and Carroll County market trends to help you make informed decisions
-                                    </p>
-                                </CardContent>
-                            </Card>
+                            <a href="/services/market-analysis" className="block h-full outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-xl">
+                                <Card className="border-2 hover:border-primary transition-colors h-full cursor-pointer hover:shadow-md">
+                                    <CardContent className="pt-6">
+                                        <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                                            <MapPin className="w-6 h-6 text-primary" />
+                                        </div>
+                                        <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">Local Market Analysis</h3>
+                                        <p className="text-muted-foreground">
+                                            In-depth knowledge of Eldersburg and Carroll County market trends to help you make informed decisions
+                                        </p>
+                                    </CardContent>
+                                </Card>
+                            </a>
                         </div>
                     </div>
                 </section>

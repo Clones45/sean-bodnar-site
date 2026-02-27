@@ -173,10 +173,18 @@ export default function Footer() {
                     <div>
                         <h4 className="text-sm font-semibold mb-4">Services</h4>
                         <ul className="space-y-2">
-                            <li className="text-sm text-muted-foreground">Residential Home Sales</li>
-                            <li className="text-sm text-muted-foreground">First-Time Buyers</li>
-                            <li className="text-sm text-muted-foreground">Luxury Properties</li>
-                            <li className="text-sm text-muted-foreground">Market Analysis</li>
+                            <li>
+                                <a href="/services/residential-sales" className="text-sm text-muted-foreground hover:text-primary transition-colors">Residential Home Sales</a>
+                            </li>
+                            <li>
+                                <a href="/services/first-time-buyers" className="text-sm text-muted-foreground hover:text-primary transition-colors">First-Time Buyers</a>
+                            </li>
+                            <li>
+                                <a href="/services/luxury-properties" className="text-sm text-muted-foreground hover:text-primary transition-colors">Luxury Properties</a>
+                            </li>
+                            <li>
+                                <a href="/services/market-analysis" className="text-sm text-muted-foreground hover:text-primary transition-colors">Market Analysis</a>
+                            </li>
                         </ul>
                     </div>
 

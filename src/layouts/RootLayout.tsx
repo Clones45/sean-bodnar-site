@@ -71,7 +71,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <Website>
             <Header />
             <SEOSchema />
-            {children}
+            <main className="flex-1 flex flex-col">
+                {children}
+            </main>
             <Footer />
             <ContactFloat />
             <CookieBannerErrorBoundary>

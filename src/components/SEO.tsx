@@ -6,14 +6,16 @@ interface SEOProps {
     canonical?: string;
     image?: string;
     type?: 'website' | 'article';
+    keywords?: string;
 }
 
 export function SEO({
     title,
     description,
     canonical = 'https://www.sellingwithsean.com',
-    image = 'https://img1.wsimg.com/isteam/ip/daf89318-8ad7-4a11-8f4a-b5842fa45c45/401845630_311528424972365_6482679109257298931_.jpg',
-    type = 'website'
+    image = 'https://www.sellingwithsean.com/assets/photos/Eldersburg.jpg',
+    type = 'website',
+    keywords = 'Real Estate, Realtor, Eldersburg, Sykesville, Carroll County, Howard County, Sean Bodnar, Buy Home, Sell Home'
 }: SEOProps) {
     const siteTitle = 'Sean Bodnar - Keller Williams Lucido Agency';
     const fullTitle = title === siteTitle ? title : `${title} | ${siteTitle}`;
@@ -23,6 +25,7 @@ export function SEO({
             {/* Standard metadata */}
             <title>{fullTitle}</title>
             <meta name="description" content={description} />
+            <meta name="keywords" content={keywords} />
             <link rel="canonical" href={canonical} />
 
             {/* Open Graph / Facebook */}
