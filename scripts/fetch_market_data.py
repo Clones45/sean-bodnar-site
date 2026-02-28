@@ -37,12 +37,12 @@ def save(data: Dict[str, Any]) -> None:
 
 def scrape() -> Dict[str, Any]:
     try:
-        from scrapling.fetchers import PlayWrightFetcher
+        from scrapling.fetchers import DynamicFetcher
     except ImportError:
         print("[fetch_market_data] ERROR: scrapling is not installed.", file=sys.stderr)
         raise
 
-    fetcher = PlayWrightFetcher(
+    fetcher = DynamicFetcher(
         auto_match=False,
         headless=True,
         stealth=True,

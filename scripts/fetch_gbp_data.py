@@ -62,12 +62,12 @@ def star_text_to_float(text: str) -> float | None:
 
 def scrape() -> Dict[str, Any]:
     try:
-        from scrapling.fetchers import PlayWrightFetcher
+        from scrapling.fetchers import DynamicFetcher
     except ImportError:
         print("[fetch_gbp_data] ERROR: scrapling is not installed. Run: pip install scrapling", file=sys.stderr)
         raise
 
-    fetcher = PlayWrightFetcher(
+    fetcher = DynamicFetcher(
         auto_match=False,
         headless=True,
         stealth=True,

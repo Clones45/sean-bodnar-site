@@ -106,7 +106,7 @@ export default function Footer() {
                             <img
                                 src="https://img1.wsimg.com/isteam/ip/daf89318-8ad7-4a11-8f4a-b5842fa45c45/images%20(2).png"
                                 alt="Bob Lucido Team Logo"
-                                className="h-16 w-auto object-contain"
+                                className="h-24 w-auto object-contain"
                             />
                         </div>
                         <h3 className="text-lg font-bold text-primary mb-4">Sean Bodnar - Keller Williams Lucido Agency</h3>
@@ -198,11 +198,28 @@ export default function Footer() {
                 <div className="mt-8 pt-8 border-t border-border">
                     <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
                         <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6">
-                            <img
-                                src="/realtor-eho-logos.png"
-                                alt="Equal Housing Opportunity and REALTOR® Logos"
-                                className="h-10 w-auto object-contain dark:invert opacity-75 hover:opacity-100 transition-opacity"
-                            />
+                            <div className="flex items-center gap-4">
+                                <img
+                                    src="/realtor-eho-logos.png"
+                                    alt="Equal Housing Opportunity and REALTOR® Logos"
+                                    className="h-14 w-auto object-contain dark:invert grayscale contrast-200"
+                                />
+                                <div
+                                    className="h-16 w-48 bg-black white:bg-white"
+                                    style={{
+                                        WebkitMaskImage: 'url(/assets/photos/KwLogo.png)',
+                                        WebkitMaskSize: 'contain',
+                                        WebkitMaskRepeat: 'no-repeat',
+                                        WebkitMaskPosition: 'center',
+                                        maskImage: 'url(/assets/photos/KwLogo.png)',
+                                        maskSize: 'contain',
+                                        maskRepeat: 'no-repeat',
+                                        maskPosition: 'center',
+                                    }}
+                                    aria-label="Keller Williams Logo"
+                                    role="img"
+                                />
+                            </div>
                             <p className="text-sm text-muted-foreground text-center md:text-left">
                                 © {currentYear} Sean Bodnar - Keller Williams Lucido Agency. All rights reserved.
                             </p>
