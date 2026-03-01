@@ -1,9 +1,9 @@
 {
-    "median_sale_price": "$485,000",
-    "days_on_market": "12 Days",
-    "inventory": "342 Active Listings",
-    "market_type": "Seller's Market",
-    "trend_summary": "The Carroll County market remains highly competitive with low inventory driving up median sale prices compared to last year.",
-    "last_updated": "2026-02-27T12:00:00Z",
-    "status": "ok"
+  "median_sale_price": "$485,000",
+  "days_on_market": "12 Days",
+  "inventory": "342 Active Listings",
+  "market_type": "Seller's Market",
+  "trend_summary": "The Carroll County market remains highly competitive with low inventory driving up median sale prices compared to last year.",
+  "last_updated": "2026-03-01T07:25:57.031885+00:00",
+  "status": "error"
 }
