@@ -1,6 +1,41 @@
 import { Mail, Phone, MapPin, Star } from 'lucide-react';
 import { useSeoStats } from '@/hooks/useSeoStats';
 
+// ── FAQ Links Data ────────────────────────────────────────────────────────────
+
+const FAQ_LINKS = [
+    { href: '/faq/first-step-home-buying-eldersburg', label: 'First Step in Home Buying' },
+    { href: '/faq/how-real-estate-agents-paid-maryland', label: 'How Agents Are Paid in MD' },
+    { href: '/faq/questions-ask-realtor-eldersburg', label: 'Questions to Ask a Realtor' },
+    { href: '/faq/maryland-agency-disclosure-form', label: 'MD Agency Disclosure Form' },
+    { href: '/faq/eldersburg-buyers-or-sellers-market', label: "Buyer's or Seller's Market?" },
+    { href: '/faq/days-on-market-21784-zip-code', label: 'Days on Market in 21784' },
+    { href: '/faq/factors-impact-home-value-eldersburg', label: 'What Drives Home Values?' },
+    { href: '/faq/offer-rejected-eldersburg', label: 'Offer Rejected? Next Steps' },
+    { href: '/faq/foreclosures-eldersburg-md', label: 'Foreclosures in Eldersburg' },
+    { href: '/faq/low-down-payment-mortgage-maryland', label: 'Low Down Payment Mortgages' },
+    { href: '/faq/maryland-mortgage-program-first-time-buyers', label: 'MD Mortgage Program' },
+    { href: '/faq/closing-costs-carroll-county-md', label: 'Closing Costs in Carroll Co.' },
+    { href: '/faq/earnest-money-eldersburg-real-estate', label: 'What Is Earnest Money?' },
+    { href: '/faq/home-inspection-eldersburg', label: 'Home Inspection Importance' },
+    { href: '/faq/well-septic-systems-eldersburg', label: 'Well & Septic Systems' },
+    { href: '/faq/superfund-disclosure-maryland-real-estate', label: 'Superfund Disclosure MD' },
+    { href: '/faq/right-to-farm-carroll-county', label: 'Right to Farm Laws' },
+    { href: '/faq/property-taxes-carroll-county-md', label: 'Property Taxes in Carroll Co.' },
+    { href: '/faq/schools-eldersburg-md', label: 'Schools in Eldersburg' },
+    { href: '/faq/commute-eldersburg-to-baltimore-dc', label: 'Commute to Baltimore / D.C.' },
+    { href: '/faq/internet-broadband-eldersburg', label: 'Internet & Broadband Options' },
+    { href: '/faq/recreational-amenities-liberty-reservoir-piney-run', label: 'Liberty Reservoir & Piney Run' },
+    { href: '/faq/restaurants-eldersburg-md', label: 'Best Restaurants in Eldersburg' },
+    { href: '/faq/community-events-eldersburg', label: 'Community Events' },
+    { href: '/faq/new-housing-developments-eldersburg-2025-2026', label: 'New Housing Developments' },
+    { href: '/faq/commercial-development-eldersburg', label: 'Commercial Development' },
+    { href: '/faq/hoa-vs-non-hoa-eldersburg', label: 'HOA vs. Non-HOA Neighborhoods' },
+    { href: '/faq/diversity-eldersburg-community', label: 'Diversity in Eldersburg' },
+    { href: '/faq/environmental-risks-eldersburg', label: 'Environmental Risks' },
+    { href: '/faq/long-term-home-value-outlook-eldersburg', label: 'Long-Term Value Outlook' },
+];
+
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
 function StarRating({ rating, max = 5 }: { rating: number | null; max?: number }) {
@@ -99,7 +134,7 @@ export default function Footer() {
     return (
         <footer className="bg-muted border-t">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
                     {/* Company Info */}
                     <div className="lg:col-span-1">
                         <div className="mb-6">
@@ -163,7 +198,19 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* Contact Info */}
+                    {/* Buyer FAQ — Eldersburg */}
+                    <div className="lg:col-span-2">
+                        <h4 className="text-sm font-semibold mb-4">Buyer FAQ in Eldersburg</h4>
+                        <ul className="grid grid-cols-2 gap-x-4 gap-y-1.5">
+                            {FAQ_LINKS.map((link) => (
+                                <li key={link.href}>
+                                    <a href={link.href} className="text-xs text-muted-foreground hover:text-primary transition-colors leading-snug">
+                                        {link.label}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                     <div>
                         <h4 className="text-sm font-semibold mb-4">Contact Us</h4>
                         <ul className="space-y-3">
