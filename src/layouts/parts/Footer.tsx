@@ -264,8 +264,7 @@ export default function Footer() {
                             <li className="flex items-start gap-3 group">
                                 <MapPin className="w-5 h-5 text-primary mt-0.5 flex-shrink-0 transition-transform group-hover:scale-110" aria-hidden="true" />
                                 <span className="text-sm text-slate-500 leading-relaxed">
-                                    Serving Eldersburg, Sykesville, Howard County & Surrounding Areas<br />
-                                    <span className="text-xs text-slate-400 font-mono mt-1.5 block tracking-widest">21784 • 21048 • 21104 • 21797</span>
+                                    6229 Sykesville Rd, Eldersburg, MD 21784, United States
                                 </span>
                             </li>
                         </ul>
