@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useLocation } from 'react-router-dom';
 import { SEO } from '@/components/SEO';
+import { GoogleReviews } from '@/components/GoogleReviews';
 
 function ImageCarousel() {
     const images = [
@@ -358,6 +359,7 @@ export default function HomePage() {
                     </div>
                 </section>
 
+
                 {/* Location Map */}
                 <section className="py-20 bg-background">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -520,6 +522,9 @@ export default function HomePage() {
                         </form>
                     </div>
                 </section>
+
+                {/* Google Reviews Widget */}
+                <GoogleReviews />
 
                 {/* CTA Section */}
                 <section className="py-20 bg-primary text-primary-foreground">

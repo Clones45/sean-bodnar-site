@@ -28,7 +28,7 @@ export default defineConfig(({ mode }) => ({
             },
         }),
         {
-            name: 'manual-contact-middleware',
+            name: 'manual-api-middleware',
             configureServer(server) {
                 const env = loadEnv(mode, process.cwd(), '');
                 process.env.RESEND_API_KEY = env.RESEND_API_KEY;
@@ -64,9 +64,31 @@ export default defineConfig(({ mode }) => ({
                         };
 
                         try {
-                            // Dynamic import to avoid build-time issues if possible, or direct if supported
                             const { POST } = await import('./src/api/contact/index.ts');
                             await POST(req as any, res as any);
+                        } catch (error) {
+                            console.error('Middleware Error:', error);
+                            (res as any).status(500).json({ error: String(error) });
+                        }
+                        return;
+                    }
+
+                    if (req.url === '/api/reviews' && req.method === 'GET') {
+                        console.log('[Middleware] Intercepted GET /api/reviews');
+
+                        (res as any).status = (code: number) => {
+                            res.statusCode = code;
+                            return res;
+                        };
+                        (res as any).json = (body: any) => {
+                            res.setHeader('Content-Type', 'application/json');
+                            res.end(JSON.stringify(body));
+                            return res;
+                        };
+
+                        try {
+                            const { GET } = await import('./src/api/reviews/index.ts');
+                            await GET(req as any, res as any);
                         } catch (error) {
                             console.error('Middleware Error:', error);
                             (res as any).status(500).json({ error: String(error) });

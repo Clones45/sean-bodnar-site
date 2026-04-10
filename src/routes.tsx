@@ -10,6 +10,9 @@ const FirstTimeBuyersPage = lazy(() => import('./pages/services/first-time-buyer
 const LuxuryPropertiesPage = lazy(() => import('./pages/services/luxury-properties'));
 const MarketAnalysisPage = lazy(() => import('./pages/services/market-analysis'));
 
+// FAQ Index Page
+const FaqIndex = lazy(() => import('./pages/faq/index'));
+
 // FAQ Pages — Eldersburg Home Buyer Questions (SEO)
 const FaqFirstStep = lazy(() => import('./pages/faq/first-step-home-buying-eldersburg'));
 const FaqAgentsPaid = lazy(() => import('./pages/faq/how-real-estate-agents-paid-maryland'));
@@ -68,6 +71,7 @@ export const routes: RouteObject[] = [
         element: <MarketAnalysisPage />,
     },
     // ── FAQ Routes ──────────────────────────────────────────────────────────────
+    { path: '/faq', element: <FaqIndex /> },
     { path: '/faq/first-step-home-buying-eldersburg', element: <FaqFirstStep /> },
     { path: '/faq/how-real-estate-agents-paid-maryland', element: <FaqAgentsPaid /> },
     { path: '/faq/questions-ask-realtor-eldersburg', element: <FaqQuestionsAsk /> },
@@ -112,6 +116,7 @@ export type Path =
     | '/services/first-time-buyers'
     | '/services/luxury-properties'
     | '/services/market-analysis'
+    | '/faq'
     | '/faq/first-step-home-buying-eldersburg'
     | '/faq/how-real-estate-agents-paid-maryland'
     | '/faq/questions-ask-realtor-eldersburg'
